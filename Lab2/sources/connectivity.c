@@ -18,6 +18,7 @@
 #include "connectivity.h"
 
 #define DEBUG 0
+long int find=0, uni=0;
 
 /******************************************************************************
  * quick_find()
@@ -42,12 +43,14 @@ void quick_find(int *id, int N, FILE * fp, int quietOut)
    /* initialize; all disconnected */
    for (i = 0; i < N; i++) {
       id[i] = i;
+      find++;
    }
 
    /* read while there is data */
    while (fscanf(fp, "%d %d", &p, &q) == 2) {
       pairs_cnt++;
       /* do search first */
+      find++;
       if (id[p] == id[q]) {
          /* already in the same set; discard */
 #if (DEBUG == 1)
@@ -58,7 +61,9 @@ void quick_find(int *id, int N, FILE * fp, int quietOut)
 
       /* pair has new info; must perform union */
       for (t = id[p], i = 0; i < N; i++) {
+         uni+=2;
          if (id[i] == t) {
+            uni++;
             id[i] = id[q];
          }
       }
@@ -96,6 +101,7 @@ void quick_union(int *id, int N, FILE * fp, int quietOut)
    /* initialize; all disconnected */
    for (i = 0; i < N; i++) {
       id[i] = i;
+      find+=2;
    }
 
    /* read while there is data */
@@ -105,11 +111,15 @@ void quick_union(int *id, int N, FILE * fp, int quietOut)
       j = q;
 
       /* do search first */
+      find++;
       while (i != id[i]) {
          i = id[i];
+         find++;
       }
+      find++;
       while (j != id[j]) {
          j = id[j];
+         find++;
       }
       if (i == j) {
          /* already in the same set; discard */
@@ -121,6 +131,7 @@ void quick_union(int *id, int N, FILE * fp, int quietOut)
 
       /* pair has new info; must perform union */
       id[i] = j;
+      uni++;
       links_cnt++;
 
       if (!quietOut)
