@@ -18,7 +18,7 @@
 #include "connectivity.h"
 
 #define DEBUG 0
-long int find=0, uni=0;
+unsigned long int find=0, uni=0;
 
 /******************************************************************************
  * quick_find()
@@ -101,7 +101,6 @@ void quick_union(int *id, int N, FILE * fp, int quietOut)
    /* initialize; all disconnected */
    for (i = 0; i < N; i++) {
       id[i] = i;
-      find+=2;
    }
 
    /* read while there is data */
@@ -114,12 +113,12 @@ void quick_union(int *id, int N, FILE * fp, int quietOut)
       find++;
       while (i != id[i]) {
          i = id[i];
-         find++;
+         find+=2;
       }
       find++;
       while (j != id[j]) {
          j = id[j];
-         find++;
+         find+=2;
       }
       if (i == j) {
          /* already in the same set; discard */
