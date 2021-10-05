@@ -75,10 +75,22 @@ void quick_find(int *id, int N, FILE * fp, int quietOut)
       if (!quietOut)
          printf(" %d %d\n", p, q);
    }
+   long int k[][]=0; 
+   /*Dar print aos grupos e contar quantos grupos há*/
+   for (i=0, i<N, i++) {
+      j=id[i];
+      k[j][i];
+   }
+   for(l=0, l<j, l++) {
+      printf ("%ld-", k[l][i]);
+   }
+   printf ("nº de conjuntos %d", j);
+
    printf("QF: The number of links performed is %d for %d input pairs.\n",
           links_cnt, pairs_cnt);
    total= uni+finds+compress;
    printf ("Uniões= %ld\nFinds= %ld\nCompress= %ld\n Total= %ld", uni, finds, compress,total);
+   
    return;
 }
 
@@ -286,7 +298,7 @@ void compressed_weighted_quick_union(int *id, int N, FILE * fp, int quietOut)
       }
       links_cnt++;
 
-      /* retrace the path and compress to the top  ISTO CONTA COMO UNION??????????*/
+      /* retrace the path and compress to the top */
       compress++;
       for (i = p; i != id[i]; i = x) {
          x = id[i];
