@@ -65,7 +65,7 @@ void quick_find(int *id, int N, FILE * fp, int quietOut)
       /* pair has new info; must perform union */
       uni++;
       for (t = id[p], i = 0; i < N; i++) {
-         uni+=2;
+         uni++;
          if (id[i] == t) {
             uni+=2;
             id[i] = id[q];
@@ -305,7 +305,7 @@ void compressed_weighted_quick_union(int *id, int N, FILE * fp, int quietOut)
    printf("CWQU: The number of links performed is %d for %d input pairs.\n",
           links_cnt, pairs_cnt);
 
-   return;
    total= uni+finds+compress;
    printf ("Uniões= %ld\nFinds= %ld\nCompress= %ld\n Total= %ld", uni, finds, compress,total);
+      return;
 }
