@@ -50,7 +50,7 @@ void quick_find(int *id, int N, FILE * fp, int quietOut)
    while (fscanf(fp, "%d %d", &p, &q) == 2) {
       pairs_cnt++;
       /* do search first */
-      find++;
+      find+=2;
       if (id[p] == id[q]) {
          /* already in the same set; discard */
 #if (DEBUG == 1)
@@ -58,12 +58,13 @@ void quick_find(int *id, int N, FILE * fp, int quietOut)
 #endif
          continue;
       }
-
+      
       /* pair has new info; must perform union */
+      uni++;
       for (t = id[p], i = 0; i < N; i++) {
          uni+=2;
          if (id[i] == t) {
-            uni++;
+            uni+=2;
             id[i] = id[q];
          }
       }
@@ -101,6 +102,7 @@ void quick_union(int *id, int N, FILE * fp, int quietOut)
    /* initialize; all disconnected */
    for (i = 0; i < N; i++) {
       id[i] = i;
+      find++;
    }
 
    /* read while there is data */
@@ -174,8 +176,9 @@ void weighted_quick_union(int *id, int N, FILE * fp, int quietOut)
       pairs_cnt++;
 
       /* do search first */
-      for (i = p; i != id[i]; i = id[i]);
-      for (j = q; j != id[j]; j = id[j]);
+      find+=2;
+      for (i = p; i != id[i]; i = id[i]; find+=2);
+      for (j = q; j != id[j]; j = id[j]; find+=2);
 
       if (i == j) {
          /* already in the same set; discard */
@@ -189,10 +192,12 @@ void weighted_quick_union(int *id, int N, FILE * fp, int quietOut)
       if (sz[i] < sz[j]) {
          id[i] = j;
          sz[j] += sz[i];
+         uni+=6;
       }
       else {
          id[j] = i;
          sz[i] += sz[j];
+         uni+=6;
       }
       links_cnt++;
 
@@ -236,8 +241,9 @@ void compressed_weighted_quick_union(int *id, int N, FILE * fp, int quietOut)
       pairs_cnt++;
 
       /* do search first */
-      for (i = p; i != id[i]; i = id[i]);
-      for (j = q; j != id[j]; j = id[j]);
+      find+=2;
+      for (i = p; i != id[i]; i = id[i]; find+=2);
+      for (j = q; j != id[j]; j = id[j]; find+=2);
 
       if (i == j) {
          /* already in the same set; discard */
@@ -252,15 +258,17 @@ void compressed_weighted_quick_union(int *id, int N, FILE * fp, int quietOut)
          id[i] = j;
          sz[j] += sz[i];
          t = j;
+         uni+=6;
       }
       else {
          id[j] = i;
          sz[i] += sz[j];
          t = i;
+         uni+=6;
       }
       links_cnt++;
 
-      /* retrace the path and compress to the top */
+      /* retrace the path and compress to the top  ISTO CONTA COMO UNION??????????*/
       for (i = p; i != id[i]; i = x) {
          x = id[i];
          id[i] = t;
