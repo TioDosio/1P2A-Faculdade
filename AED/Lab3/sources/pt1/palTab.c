@@ -107,19 +107,19 @@ void AlocaTabelaPalavras ( char *ficheiro, st_texto *t)
     fprintf ( stderr, "ERROR: not enough memory available!\n" );
     exit ( 2 );
   }
-  (*t).ocorrencias = (int*) calloc(1, n_dist_palavras*sizeof(int));
+  (*t).ocorrencias = (int*) malloc(n_total_palavras*sizeof(int));
   if ( (*t).ocorrencias == NULL ) {
     fprintf ( stderr, "ERROR: not enough memory available!\n" );
     exit ( 4 );
   }
   for ( i = 0; i < (*t).n_total_palavras; i++ )   {
-    (*t).palavras[i] = (char*) calloc(1, n_max_caracteres*(sizeof(char)));
+    (*t).palavras[i] = (char*) malloc(n_max_caracteres*(sizeof(char)));
     if ( (*t).palavras[i] == NULL ) {
       fprintf ( stderr, "ERROR: not enough memory available!\n" );
       exit ( 3 );
     }
-    (*t).palavras[i][0] = /* -- INSERT code to initialize table of strings  --*/ ;
-    (*t).ocorrencias[i] = /* -- INSERT code to initialize table  of counters --*/ ;
+    (*t).palavras[i][0] = {""} ;
+    (*t).ocorrencias[i] = 0;
   }
   return;
 }
@@ -202,8 +202,7 @@ void EscreveFicheiro ( char *ficheiro, st_texto *t )
   char *nome;
   int i = 0;
 
-  nome =  /* -- INSERT code for memory allocation,  --*/ ;
-  /* including dot (.) extension and string termination, see below */
+  nome =(char*) malloc((strlen(ficheiro)+10)*sizeof(char))  ;
   if ( nome == NULL ) {
     fprintf ( stderr, "ERROR: not enough memory available!\n" );
     exit ( 5 );
