@@ -112,8 +112,9 @@ void AlocaTabelaPalavras ( char *ficheiro, st_texto *t)
     fprintf ( stderr, "ERROR: not enough memory available!\n" );
     exit ( 4 );
   }
-  for ( i = 0; i < (*t).n_total_palavras; i++ )  {
-    (*t).palavras[i] = (char*) malloc((n_max_caracteres+1)*(sizeof(char)));
+  fp = AbreFicheiro ( ficheiro, "r" );
+  for ( i = 0; i < (*t).n_total_palavras; i++ ){
+    (*t).palavras[i] = (char*) malloc((strlen (LePalavra(fp))+1)*(sizeof(char)));
     if ( (*t).palavras[i] == NULL ) {
       fprintf ( stderr, "ERROR: not enough memory available!\n" );
       exit ( 3 );
@@ -121,6 +122,7 @@ void AlocaTabelaPalavras ( char *ficheiro, st_texto *t)
     (*t).palavras[i][0] = 0;
     (*t).ocorrencias[i] = 0;
   }
+  fclose(fp);
   return;
 }
 
