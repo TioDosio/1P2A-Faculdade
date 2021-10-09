@@ -215,7 +215,7 @@ void EscreveFicheiro ( char *ficheiro, st_texto *t )
   }
   printf ( "Count of distinct words: %d\n", (*t).n_dist_palavras );
   free((*t).ocorrencias);
-  for ( i = 0; i < (*t).n_total_palavras; i++ )   {
+  for (i = 0; i < (*t).n_total_palavras; i++)   {
   free((*t).palavras[i])  ;
   }
   free((*t).palavras);
