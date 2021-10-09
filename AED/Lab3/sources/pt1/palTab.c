@@ -102,23 +102,23 @@ void AlocaTabelaPalavras ( char *ficheiro, st_texto *t)
   fclose ( fp );
   printf ( "Words count: %d\n", (*t).n_total_palavras );
 
-  (*t).palavras =(char**) malloc(n_total_palavras*sizeof(t->(palavras*)));
+  (*t).palavras =(char**) malloc((t->n_total_palavras+1)*sizeof(char*));
   if ( (*t).palavras == NULL ) {
     fprintf ( stderr, "ERROR: not enough memory available!\n" );
     exit ( 2 );
   }
-  (*t).ocorrencias = (int*) malloc(n_total_palavras*sizeof(int));
+  (*t).ocorrencias = (int*) malloc(t->n_total_palavras*sizeof(int));
   if ( (*t).ocorrencias == NULL ) {
     fprintf ( stderr, "ERROR: not enough memory available!\n" );
     exit ( 4 );
   }
   for ( i = 0; i < (*t).n_total_palavras; i++ )   {
-    (*t).palavras[i] = (char*) malloc(n_max_caracteres*(sizeof(char)));
+    (*t).palavras[i] = (char*) malloc((n_max_caracteres+1)*(sizeof(char)));
     if ( (*t).palavras[i] == NULL ) {
       fprintf ( stderr, "ERROR: not enough memory available!\n" );
       exit ( 3 );
     }
-    (*t).palavras[i][0] = {""} ;
+    (*t).palavras[i][0] = ' ';
     (*t).ocorrencias[i] = 0;
   }
   return;
@@ -214,6 +214,12 @@ void EscreveFicheiro ( char *ficheiro, st_texto *t )
     fprintf ( f, "%d: %s\n", (*t).ocorrencias[i], (*t).palavras[i] );
   }
   printf ( "Count of distinct words: %d\n", (*t).n_dist_palavras );
+  free((*t).ocorrencias);
+  for ( i = 0; i < (*t).n_total_palavras; i++ )   {
+  free((*t).palavras[i])  ;
+  }
+  free((*t).palavras);
+  free (nome);
   fclose ( f );
 
   /* Anything else I should do here? */
