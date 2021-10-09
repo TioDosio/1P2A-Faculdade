@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <unistd.h>
 #define MAX_STR 100
 
 typedef struct _st_texto {
@@ -93,11 +94,8 @@ void AlocaTabelaPalavras ( char *ficheiro, st_texto *t)
   (*t).n_total_palavras = 0;
   (*t).n_dist_palavras = 0;
   fp = AbreFicheiro ( ficheiro, "r" );
-  while ( ( palavra = LePalavra ( fp ) ) != NULL ) {
+  while ( ( palavra = LePalavra (fp) ) != NULL ) {
     (*t).n_total_palavras++;
-    len = strlen ( palavra );
-    if ( len > n_max_caracteres )
-      n_max_caracteres = len;
   }
   fclose ( fp );
   printf ( "Words count: %d\n", (*t).n_total_palavras );
@@ -112,11 +110,11 @@ void AlocaTabelaPalavras ( char *ficheiro, st_texto *t)
     fprintf ( stderr, "ERROR: not enough memory available!\n" );
     exit ( 4 );
   }
-  fp = AbreFicheiro ( ficheiro, "r" );
-  for ( i = 0; i < (*t).n_total_palavras; i++ ){
-    (*t).palavras[i] = (char*) malloc((strlen (LePalavra(fp))+1)*(sizeof(char)));
-    if ( (*t).palavras[i] == NULL ) {
-      fprintf ( stderr, "ERROR: not enough memory available!\n" );
+  fp = AbreFicheiro ( ficheiro, "r");
+  for ( i = 0; i < (*t).n_total_palavras; i++){
+    (*t).palavras[i] = (char*) malloc((LePalavra (fp)+ 1)*(sizeof(char)));
+    if ( (*t).palavras[i] == NULL ){
+      fprintf (stderr, "ERROR: not enough memory available!\n" );
       exit ( 3 );
     }
     (*t).palavras[i][0] = 0;
@@ -125,7 +123,6 @@ void AlocaTabelaPalavras ( char *ficheiro, st_texto *t)
   fclose(fp);
   return;
 }
-
 
 /******************************************************************************
  * NovaPalavra()
@@ -224,7 +221,7 @@ void EscreveFicheiro ( char *ficheiro, st_texto *t )
   }
   free((*t).palavras);
   free (nome);
-  fclose ( f );
+  fclose (f);
   
   return;
 }
