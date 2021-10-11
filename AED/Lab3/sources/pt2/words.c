@@ -80,6 +80,7 @@ t_lista  *testaPalavra(t_lista *lp, char *novaPal)
 void libertaItem(Item this)
 {
   libertaPalavra((t_palavra *) this);
+  free(this);
   return;
 }
 
