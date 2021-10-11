@@ -15,7 +15,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
+#include <strings.h>
+
 #include "list.h"
 #include "words.h"
 
@@ -62,12 +63,16 @@ int main(int argc, char *argv[])
   if(argc < 2)
     Usage(argv[0]);
 
-  if(argc < 3){
-    char* inv[7];
+  if(argc == 3){
+    char inv[7];
     strcpy(inv, argv[2]);
     if(strcasecmp(inv,"Inicio")){
+      printf("EntreI!!!!!");}
+    else if(strcasecmp(inv,"fim")){
       ordem=1;
     }
+    else{ printf("Erro de ordem! Assume-se como opção inicio");
+     }
   }
   nomeFicheiroIn = argv[1];
   nomeFicheiroOut = (char*) malloc((strlen(nomeFicheiroIn)+10)*sizeof(char));
@@ -97,7 +102,7 @@ int main(int argc, char *argv[])
     exit(3);
   }
   /* write out words to output file */
-  if(ordem == 1);{
+  if (ordem == 1) {
   lp = inverter(lp);}
   aux = lp;
   while(aux != NULL) {
