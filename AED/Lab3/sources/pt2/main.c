@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <unistd.h>
 #include "list.h"
 #include "words.h"
 
@@ -52,7 +52,7 @@ void Usage(char *nomeProg)
 int main(int argc, char *argv[])
 {
   t_lista *lp, *aux;
-  int numTotalPalavras = 0;
+  int numTotalPalavras = 0,ordem = 0;
   int numPalavrasDiferentes;
   char extOut[] = ".palavras";
   char *nomeFicheiroIn, *nomeFicheiroOut;
@@ -62,6 +62,13 @@ int main(int argc, char *argv[])
   if(argc < 2)
     Usage(argv[0]);
 
+  if(argc < 3){
+    char* inv[7];
+    strcpy(inv, argv[2]);
+    if(strcasecmp(inv,"Inicio")){
+      ordem=1;
+    }
+  }
   nomeFicheiroIn = argv[1];
   nomeFicheiroOut = (char*) malloc((strlen(nomeFicheiroIn)+10)*sizeof(char));
     if(nomeFicheiroOut == NULL)
@@ -90,6 +97,8 @@ int main(int argc, char *argv[])
     exit(3);
   }
   /* write out words to output file */
+  if(ordem == 1);{
+  lp = inverter(lp);}
   aux = lp;
   while(aux != NULL) {
     escreveUmaPalavra((t_palavra*) getItemLista(aux), fpOut,(double) numTotalPalavras);
@@ -97,8 +106,7 @@ int main(int argc, char *argv[])
   }
 
   numPalavrasDiferentes = numItensNaLista(lp);
-  printf("Number of words = %d, Number of different words = %d\n",
-         numTotalPalavras, numPalavrasDiferentes);
+  printf("Number of words = %d, Number of different words = %d\n", numTotalPalavras, numPalavrasDiferentes);
 
   /* free allocated memory for list of words */
   libertaLista(lp, libertaItem);
