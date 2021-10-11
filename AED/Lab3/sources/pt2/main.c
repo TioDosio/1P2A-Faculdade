@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
   /* write out words to output file */
   aux = lp;
   while(aux != NULL) {
-    escreveUmaPalavra((t_palavra*) getItemLista(aux), fpOut);
+    escreveUmaPalavra((t_palavra*) getItemLista(aux), fpOut,(double) numTotalPalavras);
     aux = getProxElementoLista(aux);
   }
 
@@ -109,4 +109,6 @@ int main(int argc, char *argv[])
   /* -- FREE ANY OTHER MEMORY YOU HAVE ALLOCATED -- */
   free(nomeFicheiroOut);
   exit(0);
+
+  
 }

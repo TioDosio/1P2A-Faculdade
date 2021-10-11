@@ -31,4 +31,5 @@ t_lista  *getProxElementoLista(t_lista *p);
 int       numItensNaLista (t_lista *lp);
 void 	  libertaLista(t_lista *lp, void freeItem(Item));
 
+
 #endif

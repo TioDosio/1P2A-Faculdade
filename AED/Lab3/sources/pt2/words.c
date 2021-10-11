@@ -198,9 +198,9 @@ void incOcorr(t_palavra *p)
  *              it was seen on the input (ocorrencias)
  *****************************************************************************/
 
-void escreveUmaPalavra(t_palavra *p, FILE *fp)
+void escreveUmaPalavra(t_palavra *p, FILE *fp, double num)
 {
-  fprintf(fp,"%4d : %s\n", p->ocorrencias, p->pal);
+  fprintf(fp,"%4d : %s %f\n", p->ocorrencias, p->pal, ((double)p->ocorrencias)/num);
 }
 
 

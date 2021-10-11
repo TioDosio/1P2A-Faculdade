@@ -147,3 +147,20 @@ void libertaLista(t_lista *lp, void freeItem(Item)) {
 
   return;
 }
+
+
+t_lista* inverter (_t_lista* p){
+  static _t_lista* aux = NULL;
+  _t_lista* proximo = p, *atual = p;
+  
+  if (atual != NULL) {
+    proximo->prox = aux;
+    aux 
+    inverter(p->prox);
+  }
+  else {
+    return aux;
+  }
+  
+  }
+
