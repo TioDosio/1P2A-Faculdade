@@ -1,0 +1,10 @@
+* Z:\home\andre\Documents\1P2A-Faculdade\AC\Lab\1\Slice\Draft1.asc
+R1 0 N001 22K
+R2 N002 N001 22K
+R3 0 N001 11K
+R4 0 N003 22K
+Vb0 N002 0 5V
+Vb1 N003 0 5V
+.op
+.backanno
+.end

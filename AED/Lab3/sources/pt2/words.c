@@ -213,6 +213,7 @@ void escreveUmaPalavra(t_palavra *p, FILE *fp)
  * Description: free memory reserved for word
  *****************************************************************************/
 
+
 void libertaPalavra(t_palavra *p)
 {
   free(p->pal);
