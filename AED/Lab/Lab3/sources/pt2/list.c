@@ -17,6 +17,7 @@
 #include <strings.h>
 
 #include "list.h"
+#include "words.h"
 
 
 /* Linked list  */
@@ -149,15 +150,11 @@ void libertaLista(t_lista *lp, void freeItem(Item)) {
 }
 
 
-t_lista* inverter (t_lista* p) {
-  static t_lista* aux = NULL;
-  t_lista* proximo = p, *atual = p;
-  
-  if (atual != NULL) {
-    proximo = atual->prox;
-    atual->prox = aux;
-    aux = atual;
-    inverter(proximo);
+void inverter (t_lista* p, FILE *fpOut, int numTotalPalavras) {
+  t_lista* aux = p;
+  if(aux != NULL) {
+    inverter(getProxElementoLista(aux), fpOut, numTotalPalavras);
+    escreveUmaPalavra((t_palavra*) getItemLista(aux), fpOut,(double) numTotalPalavras);
   }
-return aux;
+  return;
 }

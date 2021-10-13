@@ -103,12 +103,12 @@ int main(int argc, char *argv[])
   }
   /* write out words to output file */
   if (ordem == 1) {
-  lp = inverter(lp);}
-  aux = lp;
+  inverter(lp, fpOut, numTotalPalavras);}
+  else{aux = lp;
   while(aux != NULL) {
     escreveUmaPalavra((t_palavra*) getItemLista(aux), fpOut,(double) numTotalPalavras);
     aux = getProxElementoLista(aux);
-  }
+  }}
 
   numPalavrasDiferentes = numItensNaLista(lp);
   printf("Number of words = %d, Number of different words = %d\n", numTotalPalavras, numPalavrasDiferentes);
