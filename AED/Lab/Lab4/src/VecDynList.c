@@ -272,7 +272,7 @@ int getVecDynValue(VecDyn * vecDyn, int index)
   int val;
 
   /* check if outside table bounds */
-  if ((index < 0) || (index > (2 * vecDyn->size - 2)))
+  if ((index < 0) || (index > (2 * vecDyn->size - 2) - venDyn->free))
     exit(1);
 
   /* determine the right segment */
