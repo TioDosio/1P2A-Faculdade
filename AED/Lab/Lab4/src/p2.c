@@ -37,14 +37,13 @@
  * Description:
  *
  *************************************************************************/
-int iR;
-int check_property(int * vec, iR) {
-   int result, *k,*l;
-   result = vec[2][k]
+/*int check_property(int * vec) {
+   int result, *k,*l,N;
+   result = vec[2][k];
    /* compute required property, store in result */
-   /*vou fazer o exemplo da preparação*/
-   for(l=0; l<iR; l++){
-      for(k=0; k<iR; k++){
+   /*vou fazer o exemplo da preparaçã /
+   for(l=0; l<N; l++){
+      for(k=0; k<N; k++){
          if ((vec[2][k])<(vec[2][k+1])){
             result[l]=vec[2][k+1];
          }
@@ -82,7 +81,7 @@ int main(int argc, char *argv[]) {
    }
 
    /* allocate memory, read in the array and print it */
-   vec = (int) malloc(result*sizeof(int));
+   vec = (int**) malloc(N*sizeof(int*));
    
 
    for (i = 0; i < N; i++)
@@ -100,7 +99,8 @@ int main(int argc, char *argv[]) {
 
    /* Now process array; example below sends each row at a time */
    for (i = 0; i < N; i++) {
-      result = check_property(vec[i], 0, N-1);
+      int b=N-1;
+      result = 1; //check_property(vec[i], 0, b);
       printf("result[line %d]: %d\n", i, result);
    }
 
