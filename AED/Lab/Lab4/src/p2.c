@@ -37,12 +37,19 @@
  * Description:
  *
  *************************************************************************/
-
-int check_property(int * ???, ???) {
-   int result = 0;
-
+int iR;
+int check_property(int * vec, iR) {
+   int result, *k,*l;
+   result = vec[2][k]
    /* compute required property, store in result */
-
+   /*vou fazer o exemplo da preparação*/
+   for(l=0; l<iR; l++){
+      for(k=0; k<iR; k++){
+         if ((vec[2][k])<(vec[2][k+1])){
+            result[l]=vec[2][k+1];
+         }
+      }
+   }
    return(result);
 }
 
@@ -75,8 +82,8 @@ int main(int argc, char *argv[]) {
    }
 
    /* allocate memory, read in the array and print it */
-   vec = ??? malloc( ??? );
-   ???
+   vec = (int) malloc(result*sizeof(int));
+   
 
    for (i = 0; i < N; i++)
       for (j = 0; j < N; j++)
@@ -98,9 +105,7 @@ int main(int argc, char *argv[]) {
    }
 
    /* free memory */
-   ??? ;
+   free(vec);
 
    exit(0);
 }
-
-
