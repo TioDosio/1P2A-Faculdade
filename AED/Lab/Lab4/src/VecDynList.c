@@ -243,15 +243,21 @@ VecDyn * insertVecDyn(VecDyn * vecDyn, int val)
 {
   VecDyn *new = vecDyn;
   if(vecDyn == NULL){
-    initVecDynSegment(1);
+    new = initVecDyn();
   }
-  if(VecDyn->free==0){
-    initVecDynSegment((vecDyn->size)*2);
+  if(vecDyn->free == 0){
+    new = initVecDynSegment((vecDyn->size)*2);
+    new->next=vecDyn;
+    new->table[0]=val;
+    new->free -=1;  
+  }
+  else{
+    vecDyn->table[vecDyn->size - vecDyn->free] = val;
+    vecDyn->free-=1;
+
   }
   return new;
 }
-
-
 
 /*
  *  Function:
