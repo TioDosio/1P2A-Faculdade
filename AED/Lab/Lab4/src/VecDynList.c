@@ -244,6 +244,7 @@ VecDyn * insertVecDyn(VecDyn * vecDyn, int val)
   VecDyn *new = vecDyn;
   if(vecDyn == NULL){
     new = initVecDyn();
+    new->table[0] =val;
   }
   if(vecDyn->free == 0){
     new = initVecDynSegment((vecDyn->size)*2);
@@ -283,8 +284,8 @@ int getVecDynValue(VecDyn * vecDyn, int index)
   int val;
 
   /* check if outside table bounds */
-  if ((index < 0) || (index > (2 * vecDyn->size - 2) - venDyn->free))
-    exit(1);
+  if ((index < 0) || (index > (2 * vecDyn->size - 2) - vecDyn->free))
+    exit(1);2
 
   /* determine the right segment */
   for(;;) {
@@ -324,8 +325,28 @@ int getVecDynValue(VecDyn * vecDyn, int index)
  */
 void modifyVecDynValue(VecDyn * vecDyn, int idx, int val)
 {
+  VecDyn *new = vecDyn;
+  int index=idx;
 
-   return;
+  /* check if outside table bounds */
+  if (index + 1  < occupancyVecDyn(new)){ // o "+1" é porque é preciso um espaço para colocar o val
+    printf("ta fora da tabela");
+    exit(1);
+  }
+
+  /* determine the right segment */
+  while(occupancyVecDyn != 1) {
+    if (index + 1 > (sizeVecDyn(vecDyn->next))) {
+      break;
+    } 
+    else {
+      new = new->next;
+    }
+    new->table[index - (new->size-1)] = val;
+    return;
+  }
+
+  return val;
 }
 
 
