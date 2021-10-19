@@ -242,7 +242,7 @@ int occupancyVecDyn(VecDyn * vecDyn)
 VecDyn * insertVecDyn(VecDyn * vecDyn, int val)
 {
   VecDyn *new = vecDyn;
-
+  if 
   return new;
 }
 
