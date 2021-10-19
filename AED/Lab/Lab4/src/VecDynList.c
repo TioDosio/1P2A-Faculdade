@@ -242,7 +242,12 @@ int occupancyVecDyn(VecDyn * vecDyn)
 VecDyn * insertVecDyn(VecDyn * vecDyn, int val)
 {
   VecDyn *new = vecDyn;
-  if 
+  if(vecDyn == NULL){
+    initVecDynSegment(1);
+  }
+  if(VecDyn->free==0){
+    initVecDynSegment((vecDyn->size)*2);
+  }
   return new;
 }
 
