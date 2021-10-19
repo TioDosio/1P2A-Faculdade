@@ -37,7 +37,7 @@
  * Description:
  *
  *************************************************************************/
-/*int check_property(int * vec) {
+/*int check_property(int * vec, ?? ) {
    int result, *k,*l,N;
    result = vec[2][k];
    /* compute required property, store in result */
@@ -50,7 +50,7 @@
       }
    }
    return(result);
-}
+}*/
 
 
 
@@ -82,7 +82,9 @@ int main(int argc, char *argv[]) {
 
    /* allocate memory, read in the array and print it */
    vec = (int**) malloc(N*sizeof(int*));
-   
+   for(i=0;i<N;i++){
+      vec[i] = (int*) malloc(sizeof(int)*N);
+   }
 
    for (i = 0; i < N; i++)
       for (j = 0; j < N; j++)
@@ -105,7 +107,10 @@ int main(int argc, char *argv[]) {
    }
 
    /* free memory */
+   for(i = 0; i < N; i++){
+   free(vec[i]);
+   }
    free(vec);
-
+   fclose(fp);
    exit(0);
 }
