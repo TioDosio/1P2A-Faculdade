@@ -1,0 +1,94 @@
+Conectividade:
+    - Quick Find =>  Guardamos os N elementos numa tabela (a procursa vai ser feita com O(1)) e a união faz- se mudando todos os elementos para a tag de um dos unidos. - N²
+    - Quick Union => Com N elementos numa tabela a união é feita em árvore e a procura é percorrendo a árvore das folhas até á raiz. - N²
+    - Weighted Union => A organização é igual ao Quick Union mas é sempre a árvore pequena á maior fazendo eviando um pouco as arvores altas. - log(N)
+    - Compressed Weighted Union => A organização é igual á Weighted Union mas quando se faz uma procura e se nota que a arvore está maior que 3 nós ligasse esse á raiz. - log*N
+    - Operações Elementares => Acesso, Modificação, Inserção, Remoção 
+    - - Determinação de Complexidade:
+        - Temporal: 
+            - Recursiva => Cn = Cn- 1 + f(N);
+            - For's => Somar as iterações;
+            - Divisão de processo => Tn = f(N) + Tn/2;
+        - Memória:
+            - Somar as iterações dos for e tamanho dos (m/c)alloc's
+        - Util:
+            Se o problema for do caso T(n) = aT(n/b) + f(n) ver slide 200
+Procura Binária => Ordenar os dados e analizar o metades e ser se numero é maior ou mais pequeno e assim reduzir o tempo da procura (ex dicionário);
+Dados:
+    - Simples => int, float, double, char...
+    - Estruturados => Array uni e pluridimensionais, Acervos...
+
+Algoritmos Ordenação:
+    Tipologia:
+        - Interno => se couber memória caso contrário é externo;
+        - Estável => perserva a ordem relativa dos items;
+        - Adaptativo => sequência operações dependente do resultado das comparações;
+        - Ordenação Interna => é possível acedar a qualquer dado facilmente;
+        - Direto => se os dados forem acedidos diretamente nas operações de comparação e troca;
+    Bananinhas das boas:
+        - Selection Sort => Compara cada elemento com o resto e troca pelo menor (se for crescente); C=N²/2, T=N
+        - Insertion Sort => Começa do final dos dados e coloca os dados de forma relativa aos outros existentes; C = T=N²/4
+        - Bubble Sort => Trocas entre elementos adjacentes até estar organizado; T=C=N²/2
+        - Sheelsort => usa uma constante h para fazer trocas a longas distâncias e depois ordena entre h's; C=Nlog²N T=?
+        *- Quicksort => Esxite 2 ponteiros, um que começa á direita e encontra o maior, o segund começa á direita e econtra o menor e trocam e assim assim sucessivamente; C=NlogN Pior caso=N²
+        - Mergesort => divide os dados até ficarem 2 a 2 e ordena rescursivamente as metades; NlogN
+    Arvores:
+        - Binário => 
+        - Varrimento de árvores binárias:
+            - Pré-fixado (Preorder) – em que se processa primeiro um vértice e depois as sub-árvores esquerda e direita;
+            - In-fixado (Inorder) – em que se processa a sub-árvore esquerda, depois o vértice e depois a sub-árvore direita;
+            - Pós-fixado (Postorder) – em que se processam as sub-árvores esquerda e direita e depois o vértice.
+    Algoritmos de Procura (árvores):
+        - DFS (Depth First Search) => desce sempre até ás folhas e volta quando nao houver mais caminho;
+        - BFS (Breadth First Search) => faz procura em todos ir irmãos e depois é que passa para os filhos e depois para os irmãos deles...;
+        - GS (Generalised Search) => percorre o caminho que tem maior valor;
+    Árvores Balanceadas AVL:
+        -   Def => os filhos dos nós á direita sao sempre amiores que os pai e os da esquerda são menores e segue esta regra até ás folhas;
+        -   Rotações regras:
+                - Os filhos maiores ficam sempre á direita;
+                - Os filhos menores ficam á esquerda;
+                - A diferença entre filhos não pode ser maior que 1;
+            Tabelas de Dispersão:
+                - Boas para tabelas de simbolos, dicionarios,...;
+                - Funções de dispersão => Distribuem uniformemente chaves dos elesmemtos por inteiros [0,M-1] evitanto colisões (mais usada é divisão);
+                - Tipos de funções de dispersão:
+                    - aleatória;
+                    - quadrática;
+                    - linear;
+    Arcervos:
+        - Filas com prioridade TABELA:
+            - Ordenada=> Procura 1, inserção no inicio N, remoção no inicio N, modificar prioridade N, junção N;
+            - Não Ordenada => Procura N, inserção 1, remoção 1, junção N;
+        - Acervos:
+            - Representação em tabela de uma arvore em que os elementos estão organizados de pais para filhos por um chave (pai=(filho-1)/2);   
+            - Incerção=remoção=modificação =logN, junção N, encontrar max 1;
+    Grafos:
+        - Def => Conjuntos de vertices ligado por um conjunto de arestas;
+        - Nº de arestas de um vertice diz-se o grau;
+        - Casos para ser árvore:
+            - V-1 arestas e 0 ciclos;
+            - V-1 arestas e é ligado;
+            - Apenas um caminho simples a unir os pares;
+            - Tirando uma aresta deixa de ser;
+        - Max de arestas => V(V-1)/2;
+        - Denso => nº de arestas alto;
+        - Esparso => poucas arestas;
+        - Clique => Sub-grafo completo;
+        - Densidade => 2E/V;
+        - Bipartido => 2 conjuntos em que apenas existem vertices de um para o outro;
+        - Direcionado/dirigido/digrafo => arestas com sentido;
+        - Ponderado => quando as arestas têm peso;
+        - Ponderado e direcionado => rede;
+
+        - Matriz de Adjacências:
+            - V x V de valores booleanos (1 ou 0);
+        - Lista de Adjacências:
+            - 
+
+
+
+
+Maybe ver: - Letras da complexidade (O's e cenas)
+Duvidas:
+    - arvore binária;
+    - vertice interno e externo;
