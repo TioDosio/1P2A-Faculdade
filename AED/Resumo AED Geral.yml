@@ -112,8 +112,19 @@ Algoritmos Ordenação:
             - Conjunto de arestas ligando todos os vertices tais que a soma dos pesos das arestas é o mais baixo;
             - Dados 2 conjuntos existe uma aresta de menor peso que os liga;
 
-
-
+        - Algoritmos:
+            - Prim:
+                - Escolhe sempre o nó de maior valor;
+                - Encontra MST em tempo linear;
+            - Kruskal:
+                - ? como funciona ?
+                - Econtra MST E*log(E);
+            - Dijkstra:
+                - o caminho calculado é com base do ponto inical ao final e apenas do vertice atual para o próximo;
+        - Caminhos:
+            - Simples => 2 caminhos ligados por um caminho;
+            - Hamilton => caminho que passa por todos os vertices exatamente 1 vez;
+            - Euler => caminho que use todas as arestas do grafo exatamente 1 vez        
 
 
 Maybe ver: - Letras da complexidade (O's e cenas)
