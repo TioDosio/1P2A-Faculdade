@@ -82,8 +82,36 @@ Algoritmos Ordenação:
 
         - Matriz de Adjacências:
             - V x V de valores booleanos (1 ou 0);
+            - Vantagens:
+                - Se houver espaço;
+                - Grafos densos;
+                - algoritmos requerem amis que V² operações;
+                - Adição e Remoção facil;
+                - Facil de determinar arestas paralelas;
+                - Facil de determinar ligações;
+            - Desvantagens:
+                - Memória proporcional a V²;
+                - Inicialização do grafo pode nao compensar;
+
         - Lista de Adjacências:
-            - 
+            - Vantagens:
+                - Inicialização proporcional a V;
+                - Espaço proporcional V+E (bom para esparsos);
+                - Adição eficiente;
+            - Desvantagens:
+                - Remoção de arestas proporcional a V;
+                - Grafos Grandes que não podem ter arestas paralelas;
+                - Arestas paralelas;
+
+        - Procura em grafos:
+            - DFS e BFS em:
+                - Matriz Adj. => V²;
+                - Lista Adj. => V+E;
+
+        - Árvore Minima de Suporte (MST):
+            - Conjunto de arestas ligando todos os vertices tais que a soma dos pesos das arestas é o mais baixo;
+            - Dados 2 conjuntos existe uma aresta de menor peso que os liga;
+
 
 
 
